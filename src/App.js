@@ -1,26 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+ import ReactDOM from 'react-dom';
+// import logo from './heart.jpg';
+ import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ 
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { age: '',
+           isSubmitted :false };
+    }
+  
+  myChangeHandler = (event) => {
+    this.setState({age: event.target.value});
+  }
+  
+
+   
+mySubmitHandler (event) {
+  // event.prevent.default();
+   this.setState({
+    isSubmitted : true
+    }
+   )
+ 
+ 
 }
+
+  
+  render() {
+    return(
+    <form>
+       
+      <h1>Enter your age :</h1>
+
+      <input
+        type='number'
+        name = 'age'
+         onChange={this.myChangeHandler}
+      />
+
+      <button onClick= {(event)=>{event.preventDefault();this.mySubmitHandler(event)}}>Submit</button>
+      
+     
+      
+      { this.state.isSubmitted ? 
+       <div>Your Age is {this.state.age}</div> : <div></div>
+       
+      }
+     
+ <br></br>
+       </form>
+
+    );
+       
+
+  }
+
+}
+
+ReactDOM.render(
+
+  <App />,
+document.getElementById('root'));
+
 
 export default App;
