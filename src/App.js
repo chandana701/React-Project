@@ -10,7 +10,8 @@ import React from 'react';
     constructor(props){
       super(props);
       this.state = {
-        isLoggedIn :true
+        isLoggedIn :true,
+        username : '',
       }
     }
     Lg=(event)=>{
@@ -24,48 +25,61 @@ import React from 'react';
         isLoggedIn : false
       })
     }
-    
+    myChangeHandler = (event) =>{
+      this.setState({
+        username : event.target.value,
+        isLoggedIn :true
+      })
+
+    }
 
     render(){
       return(
-        // <div>
-        // {/* {this.state.isLoggedIn?   
-        //   <p>
-        //   <button onClick={()=>this.Lg()}>Log Out</button>
-        //   </p>
-        //  :
-        //  <p>
-        //  <button onClick={()=>this.LO()}>Log In</button>
-        //  </p> */}
-
-        //  {/* } */}
-
+      
+       <form>
+   
+      
+        {this.state.isLoggedIn?
+        <p>
+        <h1>User Name</h1>
+       <input type = 'text' 
+          name = 'username'
+          onChange = {this.myChangeHandler}
+       />
+        
+          <button onClick={(event)=>{event.preventDefault();this.LO()}}>Login</button>
+          
+          </p>
+          :
+         <p>
+           <div>Welcome {this.state.username}!</div>
+          <button onClick={(event)=>{event.preventDefault();this.Lg()}}>Logout</button>
+   
+        </p>
+        }
          
         
-        <div>
+      
        
-       {this.state.isLoggedIn?
+       {/* {this.state.isLoggedIn?
         <Login 
           lo = {this.LO}
         />    
            :
         <Logout
           lg = {this.Lg}
-        />
-              
+        />      
        
-       }
-      
-      {/* </div> */}
-      </div>
-      );
-      // return(
+       } */}
+     
 
-      //  <div>
-      //    <Login></Login>
-      //    <Logout></Logout>
-      //  </div>
-      // )
+     
+       </form>
+        
+      
+      
+      );
+   
     }
 
 
@@ -75,63 +89,7 @@ import React from 'react';
 
  }
 
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { age: '',
-//            isSubmitted :false };
-//     }
-  
-//   myChangeHandler = (event) => {
-//     this.setState({age: event.target.value});
-//     this.setState({
-//       isSubmitted : false
-//     })
-//   }
-  
 
-   
-// mySubmitHandler (event) {
-  // event.prevent.default();
-//    this.setState({
-//     isSubmitted : true
-//     }
-//    )
- 
- 
-// }
-
-  
-//   render() {
-//     return(
-//     <form>
-       
-//       <h1>Enter your age :</h1>
-
-//       <input
-//         type='number'
-//         name = 'age'
-//          onChange={this.myChangeHandler}
-//       />
-
-//       <button onClick= {(event)=>{event.preventDefault();this.mySubmitHandler(event)}}>Submit</button>
-      
-     
-      
-//       { this.state.isSubmitted ? 
-//        <div>Your Age is {this.state.age}</div> : <div></div>
-       
-//       }
-     
-//  <br></br>
-//        </form>
-
-//     );
-       
-
-//   }
-
-// }
 
 ReactDOM.render(
 
