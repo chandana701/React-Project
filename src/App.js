@@ -14,6 +14,9 @@ class App extends React.Component {
   
   myChangeHandler = (event) => {
     this.setState({age: event.target.value});
+    this.setState({
+      isSubmitted : false
+    })
   }
   
 
