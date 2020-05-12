@@ -9,18 +9,41 @@ import React from 'react';
 
     constructor(props){
       super(props);
-      
+      this.state = {
+        username : '',
+        isLoggedIn : false
+      }
      
     }
+    myChangeHandler = (event)=>{
+         this.setState({
+           username : event.target.value
+         })
+    }
+    LoginUpdate = (event)=>(
+      this.setState({
+        isLoggedIn :true
+      })
+    )
+    LogoutUpdate = (event)=>(
+      this.setState({
+        isLoggedIn :false
+      })
+    )
    
     render(){
       return (
-      
-      
-       <div>
-      
+      <div>
+       {this.state.isLoggedIn ? 
+         
+        <Logout username = {this.state.username}
+        LogoutUpdate = {this.LogoutUpdate} />
+        :
+        <Login username={this.myChangeHandler}
+         LoginUpdate = {this.LoginUpdate}
+        />
+       }
        </div>
-        
       );
       
       
