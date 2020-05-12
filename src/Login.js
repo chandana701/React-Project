@@ -17,7 +17,7 @@ import React from 'react';
         <form>
           <h1>User Name</h1>
           <input type = "text"
-            onChange = {this.props.username}
+            onChange = {this.props.change}
            />
            <button onClick = {this.props.LoginUpdate}>Login</button>
               

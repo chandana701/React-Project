@@ -39,7 +39,7 @@ import React from 'react';
         <Logout username = {this.state.username}
         LogoutUpdate = {this.LogoutUpdate} />
         :
-        <Login username={this.myChangeHandler}
+        <Login change={this.myChangeHandler}
          LoginUpdate = {this.LoginUpdate}
         />
        }
